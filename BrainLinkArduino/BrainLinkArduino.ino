@@ -5,7 +5,6 @@
 // Arduino Bluetooth-Serial Interface with Mindwave
 //Arduino串口解析脑波蓝牙串口数据流，并解析噪声，专注力及放松力。
 ////////////////////////////////////////////////////////////////////////
-#include "MotorDriver.h"
 
 /**
  * BlueTooth  
@@ -55,6 +54,13 @@ unsigned long restart_Time = 0;
 unsigned long dropdownTime = 0;
   
 const unsigned char stepper_ctrl[]={0x27,0x36,0x1e,0x0f};
+
+struct MotorStruct {
+    uint8_t speed;
+    uint8_t direction;
+    uint8_t position;
+};
+
 
 MotorStruct stepperMotor;
 unsigned int number_of_steps = 200;
@@ -278,6 +284,5 @@ void loop() {
     } // end if read 0xAA byte
   } // end if read 0xAA byte    
 }
-
 
 
